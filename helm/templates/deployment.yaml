@@ -37,18 +37,6 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /swagger/index.html
-              port: http
-            initialDelaySeconds: 10
-            periodSeconds: 60
-          readinessProbe:
-            httpGet:
-              path: /swagger/index.html
-              port: http
-            initialDelaySeconds: 10
-            periodSeconds: 60
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
