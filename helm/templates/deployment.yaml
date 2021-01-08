@@ -39,12 +39,16 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: "swagger/v1/swagger.json"
+              path: /swagger/v1/swagger.json
               port: http
+            initialDelaySeconds: 10
+            periodSeconds: 60
           readinessProbe:
             httpGet:
-              path: "swagger/v1/swagger.json"
+              path: /swagger/v1/swagger.json
               port: http
+            initialDelaySeconds: 10
+            periodSeconds: 60
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
